@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import GameInfo from './GameInfoComponent';
 
 class Directory extends Component {
     constructor(props) {
@@ -13,20 +14,20 @@ class Directory extends Component {
         this.setState({selectedGame: game})
     }
 
-    renderSelectedGame(game) {
-        if (game) {
-            return (
-                <Card>
-                    <CardImg top src={game.image} alt={game.name} />
-                    <CardBody>
-                        <CardTitle>{game.name}</CardTitle>
-                        <CardText>{game.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
+    // renderSelectedGame(game) {
+    //     if (game) {
+    //         return (
+    //             <Card>
+    //                 <CardImg top src={game.image} alt={game.name} />
+    //                 <CardBody>
+    //                     <CardTitle>{game.name}</CardTitle>
+    //                     <CardText>{game.description}</CardText>
+    //                 </CardBody>
+    //             </Card>
+    //         );
+    //     }
+    //     return <div />;
+    // }
 
     render() {
         const directory = this.props.games.map(game => {
@@ -47,14 +48,11 @@ class Directory extends Component {
                 <div className="row">
                     {directory}
                 </div>
-                <div className="row">
-                    <div className="col-md-5 m-1">
-                        {this.renderSelectedGame(this.state.selectedGame)}
-                    </div>
-                </div>
+                <GameInfo game={this.state.selectedGame}/>
             </div>
         );
     }
 }
+
 
 export default Directory;

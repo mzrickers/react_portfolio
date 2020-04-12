@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Directory from './components/DirectoryComponent';
+import { GAMES } from './shared/games';
 import './App.css';
 
 class App extends Component {
+    constructor(props) {
+      super(props);
+        this.state = {
+          games: GAMES
+        }
+    }
   render() {
       return (
           <div className="App">
@@ -12,7 +19,7 @@ class App extends Component {
                   <NavbarBrand href="/">Board Game Cafe</NavbarBrand>
               </div>
               </Navbar>
-              <Directory />
+              <Directory games={this.state.games}/>
           </div>
       );
   }

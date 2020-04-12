@@ -11252,6 +11252,16 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-open-sans@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-open-sans/-/typeface-open-sans-0.0.75.tgz#20d0c330f14c0c40463c334adbedd6005389abe4"
+  integrity sha512-0lLmB7pfj113OP4T78SbpSmC4OCdFQ0vUxdSXQccsSb6qF76F92iEuC/DghFgmPswTyidk8+Hwf+PS/htiJoRQ==
+
+typeface-spectral@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-spectral/-/typeface-spectral-0.0.72.tgz#2504c164f034186724ed8674e2d991e7bae7281c"
+  integrity sha512-LT2lTLHv2IjftFdMdlYsMctoETXPj9bAHX6DtAd1iHfxoRO7jS/XU63uNdX6L2Bdz1B+T6iE3+hf3BIDR0XwiA==
+
 uglify-js@^3.1.4:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-3.7.1.tgz#35c7de17971a4aa7689cd2eae0a5b39bb838c0c5"

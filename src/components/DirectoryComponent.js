@@ -1,45 +1,43 @@
 import React, { Component } from 'react';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Directory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            games: [
-                {
-                    id: 0,
-                    name: 'Boardgames',
-                    image: 'assets/react_images/gameCopy.jpeg',
-                    description: "Came hang with friends and play our wide assortment of games"
-                },
-                {
-                  id: 1,
-                  name: 'Dungeons and Dragons',
-                  image: 'assets/react_images/DndCopy.jpg',
-                  description: "Create your own character and join a world full and fantasy and magic."
-                },
-                {
-                    id: 2,
-                    name: 'Magic the Gathering',
-                    image: 'assets/react_images/mtgCopy.jpg',
-                    description: "Join our tournaments to see if your skills stack up."
-                },
-                {
-                    id: 3,
-                    name: 'Pokemon',
-                    image: 'assets/react_images/pokemonCopy.jpeg',
-                    description: "Whether you want to battle out using cards or cartridges we have it all!  Do you want to be the best?"
-                }
-            ],
+            selectedGame: null
         };
     };
 
-    render() {
-        const directory = this.state.games.map(game => {
+    onGameSelect(game) {
+        this.setState({selectedGame: game})
+    }
+
+    renderSelectedGame(game) {
+        if (game) {
             return (
-                <div key={game.id} className="col">
-                    <img src={game.image} alt={game.name}/>
-                    <h2>{game.name}</h2>
-                    <p>{game.description}</p>
+                <Card>
+                    <CardImg top src={game.image} alt={game.name} />
+                    <CardBody>
+                        <CardTitle>{game.name}</CardTitle>
+                        <CardText>{game.description}</CardText>
+                    </CardBody>
+                </Card>
+            );
+        }
+        return <div />;
+    }
+
+    render() {
+        const directory = this.props.games.map(game => {
+            return (
+                <div key={game.id} className="col-md-5 m-1">
+                    <Card onClick={() => this.onGameSelect(game)}>
+                        <CardImg width="100%" src={game.image} alt={game.name}/>
+                        <CardImgOverlay>
+                            <CardTitle>{game.name}</CardTitle>
+                        </CardImgOverlay>
+                    </Card>
                 </div>
             );
         })
@@ -48,6 +46,11 @@ class Directory extends Component {
             <div className="container">
                 <div className="row">
                     {directory}
+                </div>
+                <div className="row">
+                    <div className="col-md-5 m-1">
+                        {this.renderSelectedGame(this.state.selectedGame)}
+                    </div>
                 </div>
             </div>
         );

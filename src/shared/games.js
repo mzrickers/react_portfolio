@@ -3,7 +3,7 @@ export const GAMES = [
         id: 0,
         name: 'Boardgames',
         image: 'assets/react_images/gameCopy.jpeg',
-        description: "Came hang with friends and play our wide assortment of games",
+        description: "Came hang with friends and play our wide assortment of games!",
         comments: [
             {
                 id: 0,

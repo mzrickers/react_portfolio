@@ -3,6 +3,8 @@ import Directory from './DirectoryComponent';
 import GameInfo from './GameInfoComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
+import Home from './HomeComponent';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { GAMES } from '../shared/games';
 
 
@@ -11,22 +13,27 @@ class Main extends Component {
       super(props);
         this.state = {
           games: GAMES,
-          selectedGame: null
         }
     }
 
-    onGameSelect(gameId) {
-        this.setState({selectedGame: gameId})
-    }
-
   render() {
+
+    const HomePage = () => {
+        return (
+            <Home />
+        );
+    }
+    
       return (
-          <div>
-              <Header />
-              <Directory games={this.state.games} onClick={gameId => this.onGameSelect(gameId)}/>
-              <GameInfo game={this.state.games.filter(game => game.id === this.state.selectedGame)[0]}/>
-              <Footer />
-          </div>
+            <div>
+                <Header />
+                <Switch>
+                    <Route path='/home' component={HomePage} />
+                    <Route exact path='/directory' render={() => <Directory games={this.state.games} /> } />
+                    <Redirect to='/home' />
+                </Switch>
+                <Footer />
+            </div>
       );
   }
 }

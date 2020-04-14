@@ -1,13 +1,16 @@
 import React from 'react';
 import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function RenderDirectoryItem({game}) {
     return (
         <Card >
-            <CardImg width="100%" src={game.image} alt={game.name}/>
-            <CardImgOverlay>
-                <CardTitle>{game.name}</CardTitle>
-            </CardImgOverlay>
+            <Link to={`/directory/${game.id}`}>
+                <CardImg width="100%" src={game.image} alt={game.name}/>
+                <CardImgOverlay>
+                    <CardTitle>{game.name}</CardTitle>
+                </CardImgOverlay>
+            </Link>
         </Card>
     );
 }

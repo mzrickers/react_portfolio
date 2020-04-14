@@ -4,9 +4,9 @@ import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
 function RenderGame({game}) {
     return (
-        <div className="col-md-5 m-1">
-            <Card>
-                <CardImg top src={game.image} alt={game.name} />
+        <div key={game.id} className="col-md-5 m-1">
+            <Card >
+                <CardImg  top src={game.image} alt={game.name} />
                 <CardBody>
                     <CardTitle>{game.name}</CardTitle>
                     <CardText>{game.description}</CardText>
@@ -43,7 +43,7 @@ function GameInfo(props) {
             <div className="container">
                 <div className="row">
                     <RenderGame game={props.game} />
-                    <RenderComments comments={props.game.comments} />
+                    <RenderComments comments={props.comments} />
                 </div>
             </div>
         )

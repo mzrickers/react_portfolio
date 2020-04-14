@@ -34,18 +34,30 @@ class Main extends Component {
             />
         );
     }
+
+    const GameWithId = ({match}) => {
+        return (
+          <GameInfo 
+            game={this.state.games.filter(game => game.id ===
+            +match.params.gameId)[0]}
+            comments={this.state.comments.filter(comment => comment.gameId ===
+            +match.params.gameId)}
+          />
+        );
+    }
     
       return (
-            <div>
-                <Header />
-                <Switch>
-                    <Route path='/home' component={HomePage} />
-                    <Route exact path='/directory' render={() => <Directory games={this.state.games} /> } />
-                    <Route exact path='/contactus' component={Contact} />
-                    <Redirect to='/home' />
-                </Switch>
-                <Footer />
-            </div>
+          <div>
+              <Header />
+              <Switch>
+                  <Route path='/home' component={HomePage} />
+                  <Route exact path='/directory' render={() => <Directory games={this.state.games} /> } />
+                  <Route path='/directory/:gameId' component={GameWithId} />
+                  <Route exact path='/contactus' component={Contact} />
+                  <Redirect to='/home' />
+              </Switch>
+              <Footer />
+          </div>
       );
   }
 }
